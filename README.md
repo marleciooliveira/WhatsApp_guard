@@ -1,4 +1,4 @@
-# 🛡️ WhathsappGuard - Seu Anjo da Guarda Digital no WhatsApp
+# 🛡️ WhatssAppGuard - Seu Anjo da Guarda Digital no WhatsApp
 
 A **Mana** é uma assistente virtual baseada em Inteligência Artificial especializada em cibersegurança e proteção ativa para **usuários leigos**. Operando diretamente de forma nativa dentro do WhatsApp, a Mana traduz conceitos complexos de segurança digital em ações simples, protegendo o usuário contra golpes financeiros, engenharia social e links maliciosos.
 
@@ -23,24 +23,47 @@ Usuários leigos têm dificuldade em navegar nos menus do WhatsApp. A Mana age c
 *   **Exemplo:** O usuário digita *"Mana, como coloco senha no meu Zap?"*.
 *   **Retorno ao usuário:** A Mana retorna um guia interativo visual simplificado (passo a passo) para ativar a Verificação em Duas Etapas ou links diretos de redirecionamento, se aplicável.
 
+### 🎙️ 4. Verificação de PIX e Boleto (por Texto ou Comando de Voz)
+Golpes de chave Pix falsa, "Pix Copia e Cola" fraudulento e boletos adulterados são um dos vetores de fraude financeira mais comuns no Brasil. A Mana também aceita verificação **por áudio**, para que o usuário leigo não precise nem digitar.
+*   **Como funciona:** O usuário manda um áudio (*"Mana, pode verificar essa chave Pix pra mim?"*) ou cola o código/boleto em texto. A Mana transcreve o áudio (Speech-to-Text), identifica o dado (chave Pix, código Copia e Cola, linha digitável de boleto) e cruza contra padrões de fraude conhecidos e formato esperado.
+*   **Retorno ao usuário:** Alerta de risco simples, igual aos demais recursos: `⚠️ Esse Pix tem sinais de fraude` ou `✅ Formato válido, mas sempre confirme o destinatário antes de pagar`.
+
+---
+
+## 🧭 Roadmap — Fase 2 (Módulo On-Device)
+
+Os recursos acima (1 a 4) rodam via API/nuvem (o conteúdo é enviado para processamento e descartado — ver seção de Privacidade). Em uma segunda fase, planejamos um **módulo complementar nativo no aparelho (app companion)**, para os casos em que processar 100% localmente é importante:
+
+*   **Processamento 100% On-Device:** um modelo de IA leve rodando direto no celular do usuário (sem enviar o conteúdo para nenhum servidor), inspirado no recurso "Scam Alert" que a própria Meta está testando no WhatsApp. Isso exige um app próprio instalado (não é possível fazer isso só pelo chat do WhatsApp).
+*   **Antivírus e Segurança do Dispositivo:** varredura de apps instalados, bloqueio de links maliciosos no nível do sistema, proteção contra roubo/perda do aparelho — função equivalente à do dfndr/PSafe, mas integrada à mesma identidade da Mana.
+
+> Este módulo depende de um app mobile nativo (Android/iOS) e é tratado como **Fase 2** do projeto — não faz parte do MVP via WhatsApp.
+
 ---
 
 ## 🛠️ Arquitetura de Alto Nível Sugerida
 
 ```mermaid
 graph TD
-    User[📱 Usuário no WhatsApp] -->|Envia Link / Print / Texto| WA_API[💬 WhatsApp Business Cloud API]
+    User[📱 Usuário no WhatsApp] -->|Envia Link / Print / Texto / Áudio| WA_API[💬 WhatsApp Business Cloud API]
     WA_API -->|Webhook HTTP POST| Backend[⚙️ Core Backend - FastAPI/Node.js]
-    
+
+    Backend -->|Áudio recebido| STT[🎙️ Speech-to-Text: Whisper]
+    STT -->|Texto transcrito| Backend
+
     Backend -->|Validação de Links| Security_APIs[🔒 APIs de Reputação: VirusTotal / Google Safe Browsing]
+    Backend -->|Chave Pix / Boleto| Pix_Validation[💰 Validação Pix/Boleto]
     Backend -->|Texto / Contexto| LLM_Mana[🧠 Cérebro da Mana: OpenAI GPT / Claude]
-    
+
     Security_APIs --> Backend
+    Pix_Validation --> Backend
     LLM_Mana --> Backend
-    
+
     Backend -->|Resposta Simplicada e Acolhedora| WA_API
     WA_API -->|Mensagem de Alerta| User
 ```
+
+> **Fase 2 (futuro, fora deste diagrama):** app companion nativo rodando um modelo local no aparelho, para processamento 100% on-device e funções de antivírus/segurança de dispositivo (ver Roadmap acima).
 
 ---
 
@@ -57,4 +80,8 @@ Como a Mana analisa mensagens enviadas por usuários, o projeto adota o princíp
 *   **Runtime:** Node.js (Express/NestJS) OU Python (FastAPI).
 *   **Interface WhatsApp:** API Oficial da Meta (WhatsApp Cloud API) ou Provedores de Gateway (Evolution API, Twilio).
 *   **Cérebro de IA:** OpenAI API (GPT-4o-mini para baixo custo e latência) com engenharia de prompt avançada.
+*   **Voz:** Whisper (Speech-to-Text) para transcrever áudios enviados pelo usuário.
 *   **Segurança e Infra:** APIs de Threat Intelligence.
+*   **Fase 2 (roadmap):** app mobile nativo para módulo on-device + antivírus (ver Roadmap).
+
+Veja o detalhamento completo de requisitos técnicos em [`REQUIREMENTS.md`](./REQUIREMENTS.md), a pesquisa de mercado em [`MARKET_RESEARCH.md`](./MARKET_RESEARCH.md), o posicionamento competitivo em [`MARKETING_PLAN.md`](./MARKETING_PLAN.md), o escopo do MVP em [`MVP.md`](./MVP.md) e o plano técnico/fluxo de processamento em [`PLANO_TECNICO.md`](./PLANO_TECNICO.md).
