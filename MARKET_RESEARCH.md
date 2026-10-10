@@ -20,11 +20,11 @@ Conclusão: o problema é grande e crescente, o que valida a dor — mas também
 
 | Produto | O que faz | Canal | Modelo | Observação |
 |---|---|---|---|---|
-| **Rooki** (rooki.com.br) | Você encaminha mensagem/link/print suspeito pelo WhatsApp e recebe nível de risco + recomendação em ~8s. Análise de contexto semântico, padrões de engenharia social, links e histórico de ameaças. | **Nativo no WhatsApp** (sem app novo) | Freemium + planos B2B (trial 7 dias) | É o concorrente mais próximo da proposta da Mana — praticamente a mesma proposta de valor para o item "Antiphishing reativo" e "Engenharia Social" do nosso README. |
+| **Rooki** (rooki.com.br) | Você encaminha mensagem/link/print suspeito pelo WhatsApp e recebe nível de risco + recomendação em ~8s. Análise de contexto semântico, padrões de engenharia social, links e histórico de ameaças. | **Nativo no WhatsApp** (sem app novo) | Freemium + planos B2B (trial 7 dias) | É o concorrente mais próximo da proposta do WhatsAppGuard — praticamente a mesma proposta de valor para o item "Antiphishing reativo" e "Engenharia Social" do nosso README. |
 | **InvestigaPraMim** (investigapramim.com) | Analisa links, Pix, boletos, mensagens, e-commerce e documentos com IA ("Tupã AI"), usando ~20 fontes de inteligência antifraude. Criado pela **União Geek**. | Não confirmado se é nativo no WhatsApp ou plataforma web/app própria | Beta (2026) | Sobreposição parcial (foco mais amplo em fraude financeira/documentos do que especificamente conversas do WhatsApp). |
 | **ZapSeguro** (github.com/EricoDaMota/Projeto-ZapSeguro) | Projeto de extensão universitária (UNICAP) que analisa notificações do WhatsApp para proteger idosos, avisando um contato responsável. | App Android (lê notificações) | **Não comercial** (projeto acadêmico/open-source) | Não é concorrente de mercado, mas confirma que a dor "proteger idosos no WhatsApp" já foi endereçada em projeto open-source — vale estudar o código como referência, não como ameaça. |
 
-**Resposta direta à pergunta:** encontrei **2 produtos comerciais/semi-comerciais brasileiros** com proposta muito próxima à da Mana (Rooki e InvestigaPraMim) e **1 projeto acadêmico não comercial** (ZapSeguro). Não é um mercado vazio, mas também não está saturado — nenhum dos encontrados combina os **3 pilares** do README da Mana (antiphishing + engenharia social + facilitador de configurações em linguagem natural) no mesmo produto.
+**Resposta direta à pergunta:** encontrei **2 produtos comerciais/semi-comerciais brasileiros** com proposta muito próxima à do WhatsAppGuard (Rooki e InvestigaPraMim) e **1 projeto acadêmico não comercial** (ZapSeguro). Não é um mercado vazio, mas também não está saturado — nenhum dos encontrados combina os **3 pilares** do README do WhatsAppGuard (antiphishing + engenharia social + facilitador de configurações em linguagem natural) no mesmo produto.
 
 ---
 
@@ -32,7 +32,7 @@ Conclusão: o problema é grande e crescente, o que valida a dor — mas também
 
 - A própria Meta está testando (beta limitado, anunciado em 13/08/2026) o recurso **"Scam Alert" / "Alerta de Golpe"**: IA rodando **localmente no aparelho** que analisa mensagens de números desconhecidos e alerta sobre padrões de golpe, **sem violar a criptografia** (processamento on-device, nada enviado para servidores da Meta).
 - Ainda **não disponível no Brasil** segundo as fontes mais recentes encontradas.
-- **Risco estratégico central para o projeto:** se a Meta expandir esse recurso nativamente e de graça para todos os usuários no Brasil, a funcionalidade #1 do README ("Análise Reativa de Links") e parte da #2 ("Detecção de Engenharia Social") podem ser **comoditizadas pela própria plataforma**. A Mana precisa ter diferenciação clara além disso (ex: linguagem acolhedora para leigos/idosos, o facilitador de configurações, suporte a prints/contexto mais rico, atendimento conversacional e não apenas um alerta passivo).
+- **Risco estratégico central para o projeto:** se a Meta expandir esse recurso nativamente e de graça para todos os usuários no Brasil, a funcionalidade #1 do README ("Análise Reativa de Links") e parte da #2 ("Detecção de Engenharia Social") podem ser **comoditizadas pela própria plataforma**. O WhatsAppGuard precisa ter diferenciação clara além disso (ex: linguagem acolhedora para leigos/idosos, o facilitador de configurações, suporte a prints/contexto mais rico, atendimento conversacional e não apenas um alerta passivo).
 
 ---
 
@@ -51,7 +51,7 @@ Conclusão: o problema é grande e crescente, o que valida a dor — mas também
 
 Fontes lidas diretamente: site oficial do Rooki (rooki.com.br), site do InvestigaPraMim (investigapramim.com — o site apresentou instabilidade, dados complementados via cache de busca), site do dfndr/PSafe (psafe.com/pt-br/dfndr-security), e documentação pública do recurso nativo "Scam Alert" da Meta/WhatsApp. **Não inclui apps de educação financeira bancária**, conforme solicitado — foco nos players que competem diretamente pela dor de "me ajuda a saber se isso é golpe".
 
-| Critério | **Rooki** | **InvestigaPraMim** (Tupã AI / União Geek) | **dfndr security** (PSafe) | **Scam Alert** (nativo Meta/WhatsApp) | **Mana** (proposta deste projeto) |
+| Critério | **Rooki** | **InvestigaPraMim** (Tupã AI / União Geek) | **dfndr security** (PSafe) | **Scam Alert** (nativo Meta/WhatsApp) | **WhatsAppGuard** (proposta deste projeto) |
 |---|---|---|---|---|---|
 | **Canal principal** | 100% nativo no WhatsApp (encaminha pro bot) | Site/app próprio — você cola o conteúdo lá, não é um bot dentro do WhatsApp | App mobile próprio (Android/iOS), não é bot de WhatsApp | Nativo dentro do próprio app WhatsApp (feature da plataforma) | Nativo no WhatsApp (mesmo modelo do Rooki) |
 | **Precisa instalar app / cadastro** | Não — zero fricção, só manda mensagem | Não precisa instalar app, mas precisa acessar o site/plataforma separadamente | Sim, precisa instalar o app dfndr | Não — já vem dentro do WhatsApp (quando disponível) | Não (mesmo princípio do Rooki) |
@@ -62,7 +62,7 @@ Fontes lidas diretamente: site oficial do Rooki (rooki.com.br), site do Investig
 | **Boleto** | ❌ não mencionado | ✅ | ❌ | ❌ | ❌ não previsto ainda — **gap a considerar** |
 | **Áudio / Vídeo** | ❌ não mencionado | ✅ | ❌ | ❌ | ❌ não previsto — relevante p/ golpe de clonagem de voz |
 | **Engenharia social em conversa** (golpe do parente, urgência, chantagem) | ✅ (menciona "padrões de engenharia social") | ⚠️ parcial (foco maior em verificação de itens isolados do que análise de conversa) | ❌ | ✅ (é o foco principal do recurso) | ✅ (pilar #2 do README) |
-| **Facilitador de configurações em linguagem natural** (ex: "como ativo verificação em duas etapas") | ❌ não encontrado | ❌ não encontrado | ❌ (tem ajustes dentro do próprio app, mas não é conversacional) | ❌ | ✅ — **nenhum concorrente oferece isso; é o diferencial mais forte da Mana** |
+| **Facilitador de configurações em linguagem natural** (ex: "como ativo verificação em duas etapas") | ❌ não encontrado | ❌ não encontrado | ❌ (tem ajustes dentro do próprio app, mas não é conversacional) | ❌ | ✅ — **nenhum concorrente oferece isso; é o diferencial mais forte do WhatsAppGuard** |
 | **Tempo de resposta** | < 8 segundos (anunciado) | < 30 segundos (anunciado) | Praticamente instantâneo (scan local no app) | Em tempo real, ao receber a mensagem | A definir (depende de LLM escolhido) |
 | **Preço (consumidor)** | R$ 9,90/mês (7 dias grátis) | Gratuito ("verificar agora é grátis") | Freemium: Free / Pro / Ultra (assinatura) | Gratuito (feature nativa da plataforma) | A definir |
 | **Modelo B2B** | Sim — B2B2C com marca própria + API Embed | Não identificado | Não é o foco (produto consumer) | N/A (feature de plataforma) | Não definido ainda |
@@ -72,20 +72,20 @@ Fontes lidas diretamente: site oficial do Rooki (rooki.com.br), site do Investig
 
 ### Leitura rápida do quadro
 
-- **Rooki é o concorrente mais perigoso** por replicar exatamente o modelo "nativo no WhatsApp, zero fricção" que a Mana pretende usar — e já está em operação comercial, cobrando R$9,90/mês.
+- **Rooki é o concorrente mais perigoso** por replicar exatamente o modelo "nativo no WhatsApp, zero fricção" que o WhatsAppGuard pretende usar — e já está em operação comercial, cobrando R$9,90/mês.
 - **InvestigaPraMim tem o escopo de conteúdo mais amplo** (PIX, boleto, áudio, vídeo) mas **não é nativo do WhatsApp** — você precisa sair da conversa e ir até outra plataforma, o que quebra a promessa de "resolver tudo sem sair do WhatsApp".
 - **dfndr/PSafe** não é de fato concorrente direto: é um antivírus de dispositivo com uma funcionalidade de link malicioso dentro de um pacote muito maior (limpeza de cache, antivírus, bloqueio remoto) — mira em quem já se preocupa com segurança técnica, não no leigo que caiu num golpe de WhatsApp.
 - **O recurso nativo da Meta é o maior risco de longo prazo**, não por ser um concorrente comercial, mas porque pode tornar grátis e nativo exatamente a função mais básica (alerta de mensagem suspeita) — sem quebrar a criptografia, o que é tecnicamente elegante e difícil de replicar fora do próprio WhatsApp.
-- **Nenhum concorrente cobre o "facilitador de configurações em linguagem natural"** — esse é, segundo esta pesquisa, o diferencial mais livre e defensável da Mana hoje.
-- **Gap identificado nesta rodada que vale avaliar:** PIX e boleto são vetores de golpe enormes no Brasil e nem o Rooki nem a Mana (no README atual) cobrem isso — o InvestigaPraMim já cobre. Pode valer a pena considerar incluir na proposta de valor.
+- **Nenhum concorrente cobre o "facilitador de configurações em linguagem natural"** — esse é, segundo esta pesquisa, o diferencial mais livre e defensável do WhatsAppGuard hoje.
+- **Gap identificado nesta rodada que vale avaliar:** PIX e boleto são vetores de golpe enormes no Brasil e nem o Rooki nem o WhatsAppGuard (no README atual) cobrem isso — o InvestigaPraMim já cobre. Pode valer a pena considerar incluir na proposta de valor.
 
 ---
 
-## 5. Gaps / Oportunidades de diferenciação para a Mana
+## 5. Gaps / Oportunidades de diferenciação para o WhatsAppGuard
 
-1. **Nenhum concorrente encontrado combina os 3 pilares do README** (antiphishing + engenharia social + facilitador de configurações em linguagem natural). O "facilitador de configurações" (ex: "Mana, como coloco senha no meu Zap?") parece ser um espaço livre — é mais "assistente pessoal de segurança" do que só "detector de golpe".
-2. **Tom e público:** os concorrentes encontrados (Rooki, InvestigaPraMim) parecem falar com um público geral/técnico ("copiloto antifraude", "camada de confiança digital"). O README da Mana já posiciona para **usuário leigo/idoso** com linguagem acolhedora — isso é diferenciação válida se for mantido de forma consistente no produto (UX de texto, não just tecnologia).
-3. **Risco de comoditização pela Meta** (seção 3) reforça que a Mana não deve competir só em "detectar link malicioso" — isso pode virar grátis e nativo. O valor duradouro está em: contexto conversacional rico, confiança/vínculo com o usuário leigo, e o facilitador de configurações.
+1. **Nenhum concorrente encontrado combina os 3 pilares do README** (antiphishing + engenharia social + facilitador de configurações em linguagem natural). O "facilitador de configurações" (ex: "WhatsAppGuard, como coloco senha no meu Zap?") parece ser um espaço livre — é mais "assistente pessoal de segurança" do que só "detector de golpe".
+2. **Tom e público:** os concorrentes encontrados (Rooki, InvestigaPraMim) parecem falar com um público geral/técnico ("copiloto antifraude", "camada de confiança digital"). O README do WhatsAppGuard já posiciona para **usuário leigo/idoso** com linguagem acolhedora — isso é diferenciação válida se for mantido de forma consistente no produto (UX de texto, não just tecnologia).
+3. **Risco de comoditização pela Meta** (seção 3) reforça que o WhatsAppGuard não deve competir só em "detectar link malicioso" — isso pode virar grátis e nativo. O valor duradouro está em: contexto conversacional rico, confiança/vínculo com o usuário leigo, e o facilitador de configurações.
 
 ---
 

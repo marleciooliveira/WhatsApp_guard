@@ -1,4 +1,4 @@
-# Requisitos do Projeto — WhatssAppGuard (Mana)
+# Requisitos do Projeto — WhatsAppGuard
 
 Decisões já tomadas:
 - **Integração WhatsApp:** API Oficial da Meta (Cloud API)
@@ -51,7 +51,7 @@ Como a prioridade é custo zero/baixo, há duas rotas:
 
 **Recomendação prática:** começar com Opção A (Groq, grátis, rápido de validar o produto) e migrar para Opção B depois, se quiser eliminar dependência externa ou já tiver uma instância AWS com RAM suficiente.
 
-> Nota sobre nomenclatura: "LLM de fábrica" = modelo-base/foundation model pronto (sem fine-tuning customizado), ao contrário de um modelo treinado especificamente com dados da Mana. É exatamente esse tipo de modelo (Llama, Gemini, GPT) que as opções acima usam — o termo que você procurava é **"foundation model"**.
+> Nota sobre nomenclatura: "LLM de fábrica" = modelo-base/foundation model pronto (sem fine-tuning customizado), ao contrário de um modelo treinado especificamente com dados do WhatsAppGuard. É exatamente esse tipo de modelo (Llama, Gemini, GPT) que as opções acima usam — o termo que você procurava é **"foundation model"**.
 
 ---
 
@@ -72,7 +72,7 @@ Como a prioridade é custo zero/baixo, há duas rotas:
 
 ## 5.1 Voz (Speech-to-Text) — comando por áudio
 
-Requisito novo: usuário manda um áudio pedindo verificação (ex: "Mana, verifica esse Pix") em vez de digitar.
+Requisito novo: usuário manda um áudio pedindo verificação (ex: "WhatsAppGuard, verifica esse Pix") em vez de digitar.
 
 - **Whisper (OpenAI, open-source)** self-hosted na VM via **faster-whisper** ou **whisper.cpp** — grátis, roda em CPU (modelo `base` ou `small` é suficiente para português e é rápido mesmo sem GPU).
 - Fluxo: WhatsApp Cloud API entrega o áudio (formato OGG/Opus) via webhook → download do arquivo de mídia → conversão para WAV (ffmpeg) → transcrição Whisper → texto segue o mesmo pipeline do LLM.
@@ -85,10 +85,10 @@ Requisito novo: usuário manda um áudio pedindo verificação (ex: "Mana, verif
 Gap identificado na pesquisa de mercado ([`MARKET_RESEARCH.md`](./MARKET_RESEARCH.md), seção 4.1) — concorrente InvestigaPraMim cobre isso e nós não cobríamos.
 
 - **Boleto:** validação do formato da linha digitável (dígito verificador, código do banco, valor) é feita localmente com uma lib de parsing de boleto (ex: `boletos` ou lógica própria seguindo o padrão FEBRABAN) — grátis, sem API externa. Isso detecta boleto com formato inválido/adulterado, mas **não confirma se o beneficiário é legítimo** (isso exigiria integração com o banco emissor, fora de escopo do protótipo).
-- **Chave Pix:** validação de formato (CPF/CNPJ/e-mail/telefone/aleatória) é local e gratuita. Confirmação se a chave pertence mesmo à pessoa esperada exigiria o DICT (Diretório de Identificadores do Banco Central) — acesso restrito a instituições de pagamento, **não disponível para o protótipo**. Por isso a resposta da Mana deve ser sempre uma recomendação de cautela, nunca uma confirmação definitiva ("formato válido, mas confirme o nome do destinatário no app do seu banco antes de pagar").
+- **Chave Pix:** validação de formato (CPF/CNPJ/e-mail/telefone/aleatória) é local e gratuita. Confirmação se a chave pertence mesmo à pessoa esperada exigiria o DICT (Diretório de Identificadores do Banco Central) — acesso restrito a instituições de pagamento, **não disponível para o protótipo**. Por isso a resposta do WhatsAppGuard deve ser sempre uma recomendação de cautela, nunca uma confirmação definitiva ("formato válido, mas confirme o nome do destinatário no app do seu banco antes de pagar").
 - **Pix Copia e Cola:** é um payload BR Code (padrão EMV) — decodificável localmente com lib própria (grátis) para extrair valor, chave e beneficiário declarado, e então aplicar os mesmos alertas.
 
-> Importante para o time de marketing/produto: como não há acesso ao DICT do Bacen, a Mana **não pode alegar que "confirma" a identidade do recebedor do Pix** — apenas identifica formato inválido/suspeito e orienta cautela. Isso precisa estar refletido nos textos de marketing (ver `MARKETING_PLAN.md`).
+> Importante para o time de marketing/produto: como não há acesso ao DICT do Bacen, o WhatsAppGuard **não pode alegar que "confirma" a identidade do recebedor do Pix** — apenas identifica formato inválido/suspeito e orienta cautela. Isso precisa estar refletido nos textos de marketing (ver `MARKETING_PLAN.md`).
 
 ---
 

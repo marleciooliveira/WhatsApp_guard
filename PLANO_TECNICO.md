@@ -1,4 +1,4 @@
-# Plano Técnico — WhatssAppGuard (Mana) — MVP
+# Plano Técnico — WhatsAppGuard — MVP
 
 Complementa [`MVP.md`](./MVP.md). Define as etapas de construção e o fluxo de processamento de mensagens.
 

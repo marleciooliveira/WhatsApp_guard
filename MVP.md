@@ -1,4 +1,4 @@
-# MVP — WhatssAppGuard (Mana)
+# MVP — WhatsAppGuard
 
 Escopo da **Fase 1** (ver divisão de fases em `README.md`, `REQUIREMENTS.md` seção 9 e `MARKETING_PLAN.md`). Este documento define o que entra no MVP, os requisitos técnicos de nuvem e de software necessários para construí-lo.
 
@@ -65,7 +65,7 @@ Escopo da **Fase 1** (ver divisão de fases em `README.md`, `REQUIREMENTS.md` se
 | Framework web | FastAPI + Uvicorn | Recebe webhook da Meta, roteia para os handlers |
 | Reverse proxy | Nginx + Certbot | TLS, proxy para a aplicação |
 | Cliente HTTP assíncrono | `httpx` | Chamadas a APIs externas (Safe Browsing, VirusTotal, LLM) |
-| LLM (foundation model) | Groq API ou Google Gemini (free-tier) → opção self-host via Ollama depois | "Cérebro" da Mana |
+| LLM (foundation model) | Groq API ou Google Gemini (free-tier) → opção self-host via Ollama depois | "Cérebro" do WhatsAppGuard |
 | OCR | Tesseract (`pytesseract`) | Extrair texto de prints |
 | STT | faster-whisper (self-hosted) | Transcrever áudios/comandos de voz |
 | Validação Pix/Boleto | Parsing local (lib própria/`boletos`, decodificação BR Code) | Checagem de formato |
