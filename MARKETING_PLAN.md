@@ -61,3 +61,49 @@ A Mana **não confirma** se uma chave Pix pertence à pessoa esperada — isso e
 1. **Lançamento (Fase 1 / MVP):** comunicar os 5 recursos já ativos (links, engenharia social, facilitador de configurações, Pix/boleto, comando de voz) com a mensagem de consolidação da seção 1.
 2. **Quando a Fase 2 avançar (app on-device/antivírus):** só então anunciar como novo recurso — tratar como um "upgrade" de produto, reforçando a mensagem "agora também protegemos seu aparelho inteiro".
 3. Revisar este plano sempre que uma funcionalidade sair do roadmap e for ao ar — manter a seção 2 (mapa de consolidação) como fonte de verdade do que pode ou não ser dito.
+
+---
+
+## 6. Conformidade Legal e Boas Práticas
+
+**Importante — leia antes de usar qualquer frase desta seção em peça publicitária:** o que está abaixo é **alinhamento de princípios e boas práticas**, não uma certificação jurídica de conformidade. "Estar alinhado com a LGPD" (ex: processar dado de forma efêmera) é diferente de "ser juridicamente conforme à LGPD" (o que exige avaliação formal, DPO/encarregado nomeado, política de privacidade registrada etc.). Qualquer afirmação pública de conformidade deve passar por revisão jurídica antes de publicada — mesma lógica já registrada em `PENDENCIAS.md` para o texto sobre Pix.
+
+### 6.1 LGPD (Lei nº 13.709/2018)
+
+A Mana já nasce desenhada em torno dos princípios do **Art. 6º da LGPD** — isso pode ser comunicado como diferencial de produto, sempre descrevendo a prática concreta, não a lei em abstrato:
+
+| Princípio LGPD (Art. 6º) | Como a Mana aplica | Como comunicar |
+|---|---|---|
+| Finalidade | Dados só são usados para gerar o veredito de risco pedido pelo usuário | *"Só usamos o que você manda pra te dar a resposta — nada além disso."* |
+| Necessidade / Minimização de dados | Nenhuma coleta de dados fora do necessário para a análise pontual | *"A Mana não guarda sua conversa."* |
+| Transparência | Explicar sempre, em linguagem simples, por que algo foi marcado como risco | Já é o tom central do produto |
+| Segurança e Prevenção | Descarte imediato de mídia/texto após gerar a resposta (ver fluxo em `PLANO_TECNICO.md`) | *"Processamos e apagamos — não guardamos print, áudio ou mensagem."* |
+| Responsabilização (accountability) | Depende de política de privacidade publicada e, formalmente, de um encarregado de dados (DPO) nomeado | **Pendente** — necessário antes do lançamento público, não é algo que o produto resolve por si só |
+
+Fontes oficiais para consulta/validação futura (não usar como prova de conformidade, usar como referência normativa):
+- [Lei nº 13.709/2018 (texto oficial) — Planalto](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm)
+- [Guia de Boas Práticas LGPD — Governo Federal](https://www.gov.br/governodigital/pt-br/privacidade-e-seguranca/guias/guia_lgpd.pdf)
+
+### 6.2 Banco Central — Pix
+
+A Mana reforça, em linguagem simples, as próprias recomendações públicas do Banco Central para prevenção a fraude no Pix (confirmar dados do destinatário antes de pagar, não clicar em links suspeitos recebidos por mensagem). Isso pode ser comunicado como *"a Mana te ajuda a seguir as recomendações do Banco Central antes de fazer um Pix"* — **nunca** como "a Mana valida/confirma seu Pix junto ao Banco Central" (ver limitação técnica já registrada em `REQUIREMENTS.md` seção 5.2: sem acesso ao DICT, não há confirmação de identidade).
+
+Vale incluir no fluxo de resposta da Mana, como informação útil pós-golpe (não como funcionalidade própria): se o usuário já caiu no golpe e fez o Pix, orientar a acionar o **Mecanismo Especial de Devolução (MED)** diretamente no app do banco do usuário — quanto mais rápido o pedido, maior a chance de recuperação do valor. A Mana **não executa** o MED, apenas orienta o usuário a buscá-lo no canal oficial do seu banco.
+
+Fontes oficiais:
+- [FAQ Participantes do Pix — Banco Central](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/FAQ_Participantes.pdf)
+- [Mecanismo Especial de Devolução (MED) — explicação institucional](https://www.bb.com.br/site/pra-voce/pix/mecanismo-especial-de-devolucao/)
+
+### 6.3 Boas Práticas Oficiais do WhatsApp Business (Meta)
+
+Pontos da política oficial da Meta que precisam orientar tanto o produto quanto a comunicação de marketing:
+
+- **Opt-in obrigatório** para qualquer mensagem iniciada pela empresa (fora da janela de 24h de atendimento) — como o fluxo da Mana é majoritariamente iniciado pelo próprio usuário (ele encaminha o conteúdo primeiro), o risco de violar essa regra é baixo no MVP, mas qualquer mensagem proativa futura (ex: campanha, novidade de produto) exige opt-in explícito, com nome da empresa visível e sem caixinha pré-marcada.
+- **Message Templates** precisam de aprovação prévia da Meta antes de serem usados para iniciar conversa fora da janela de 24h.
+- **Quality Rating / limites de envio:** a Meta monitora qualidade das mensagens (bloqueios, denúncias) e isso afeta o limite diário de contatos únicos — reforça a importância do tom cuidadoso já definido no produto, não só por UX, mas por risco de throttling da conta.
+- **Commerce/Business Messaging Policy:** proíbe conteúdo enganoso ou mensagens não solicitadas — alinhado ao próprio cuidado já adotado neste plano (seção 2) de não anunciar recurso que não existe.
+
+Fontes oficiais:
+- [About the WhatsApp Business Platform — Meta for Developers](https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform)
+- [WhatsApp Business Messaging Policy](https://whatsappbusiness.com/policy/)
+- [Template categorization — Meta for Developers](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization)
