@@ -1,4 +1,4 @@
-# 🛡️ Mana - Seu Anjo da Guarda Digital no WhatsApp
+# 🛡️ WhathsappGuard - Seu Anjo da Guarda Digital no WhatsApp
 
 A **Mana** é uma assistente virtual baseada em Inteligência Artificial especializada em cibersegurança e proteção ativa para **usuários leigos**. Operando diretamente de forma nativa dentro do WhatsApp, a Mana traduz conceitos complexos de segurança digital em ações simples, protegendo o usuário contra golpes financeiros, engenharia social e links maliciosos.
 
