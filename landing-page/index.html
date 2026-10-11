@@ -231,9 +231,29 @@
   footer .f-brand svg{width:22px;height:22px;}
   footer p{color:var(--muted2);font-size:12.5px;max-width:680px;}
   footer .f-links{display:flex;gap:18px;font-size:13px;color:var(--muted);flex-wrap:wrap;justify-content:center;}
-  footer .f-refs{display:flex;gap:14px;font-size:12px;color:var(--muted2);flex-wrap:wrap;justify-content:center;align-items:center;padding-top:14px;border-top:1px solid var(--border);width:100%;max-width:680px;}
-  footer .f-refs a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--border);}
-  footer .f-refs a:hover{color:var(--text);}
+  footer .f-refs-box{
+    width:100%;max-width:720px;margin-top:6px;
+    background:rgba(212,175,55,0.08);border:1.5px solid rgba(212,175,55,0.4);
+    border-radius:16px;padding:22px 26px;
+    display:flex;flex-direction:column;align-items:center;gap:14px;
+    box-shadow:0 10px 30px rgba(212,175,55,0.08);
+  }
+  footer .f-refs-label{font-size:14.5px;font-weight:800;color:var(--text);}
+  footer .f-refs-chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;}
+  footer .ref-chip{
+    font-size:12px;font-weight:700;color:var(--gold-2);
+    background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);
+    border-radius:999px;padding:6px 13px;transition:background .15s ease,color .15s ease;
+  }
+  footer .ref-chip:hover{background:rgba(212,175,55,0.25);color:var(--text);}
+  footer .f-refs-cta{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13.5px;font-weight:800;color:#0c0f16;
+    background:linear-gradient(180deg,var(--gold-1) 0%,var(--gold-2) 60%,var(--gold-3) 100%);
+    padding:9px 18px;border-radius:999px;margin-top:2px;
+    transition:transform .15s ease;
+  }
+  footer .f-refs-cta:hover{transform:translateY(-2px);}
 
   /* sticky mobile whatsapp bar */
   .sticky-wa{
@@ -701,16 +721,18 @@
       <a href="#faq">Dúvidas</a>
       <a href="mailto:contato@m2sec.com.br">contato@m2sec.com.br</a>
     </div>
-    <div class="f-refs">
-      <span>Desenvolvido seguindo princípios de:</span>
-      <a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001</a>
-      <a href="https://www.iso.org/standard/27701" target="_blank" rel="noopener">ISO/IEC 27701</a>
-      <a href="https://owasp.org/Top10/" target="_blank" rel="noopener">OWASP Top 10</a>
-      <a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a>
-      <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener">NIST CSF 2.0</a>
-      <a href="https://www.cisecurity.org/controls" target="_blank" rel="noopener">CIS Controls v8.1</a>
-      <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">LGPD</a>
-      <a href="seguranca.html" style="color:var(--gold-2);font-weight:700;">Como aplicamos cada um →</a>
+    <div class="f-refs-box">
+      <span class="f-refs-label">🔒 Desenvolvido seguindo princípios já comprovados e validados de segurança da informação:</span>
+      <div class="f-refs-chips">
+        <a class="ref-chip" href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001</a>
+        <a class="ref-chip" href="https://www.iso.org/standard/27701" target="_blank" rel="noopener">ISO/IEC 27701</a>
+        <a class="ref-chip" href="https://owasp.org/Top10/" target="_blank" rel="noopener">OWASP Top 10</a>
+        <a class="ref-chip" href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a>
+        <a class="ref-chip" href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener">NIST CSF 2.0</a>
+        <a class="ref-chip" href="https://www.cisecurity.org/controls" target="_blank" rel="noopener">CIS Controls v8.1</a>
+        <a class="ref-chip" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">LGPD</a>
+      </div>
+      <a href="seguranca.html" class="f-refs-cta">Como aplicamos cada um →</a>
     </div>
     <p>O WhatsAppGuard é uma assistente de apoio à decisão e não substitui a verificação oficial junto ao seu banco ou ao Banco Central antes de qualquer pagamento. Processamento de dados alinhado aos princípios da Lei Geral de Proteção de Dados (Lei 13.709/2018) — produto em fase beta. © 2026 M2SEC Security. Todos os direitos reservados.</p>
   </div>
