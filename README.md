@@ -18,7 +18,7 @@ Análise de capturas de tela (prints) ou mensagens encaminhadas de números desc
 *   **Como funciona:** O cérebro do WhatsAppGuard (LLM) é treinado com gatilhos de golpes comuns (Urgência extrema, mudança repentina de número, chantagem ou pedidos de Pix/transferência).
 *   **Retorno ao usuário:** Alertas preventivos como: *"Atenção! Esta conversa tem fortes indícios de fraude (90% de chance). Ligue para a pessoa por fora do WhatsApp antes de enviar qualquer valor."*
 
-### ⚙️ 3. Facilitador de Configurações e Diagnóstico de Segurança (Linguagem Natural)
+### ⚙️ 3. Facilitador de Configurações e Diagnóstico de Segurança (Linguagem Natural, ou seja: você pergunta com suas próprias palavras, sem termo técnico)
 Usuários leigos têm dificuldade em navegar nos menus do WhatsApp. O WhatsAppGuard age como uma ponte — e não só responde pergunta pontual, também faz um diagnóstico completo da conta quando solicitado.
 *   **Exemplo (pergunta pontual):** O usuário digita *"WhatsAppGuard, como coloco senha no meu Zap?"*.
 *   **Exemplo (diagnóstico completo):** O usuário digita *"WhatsAppGuard, minha conta está segura?"* e recebe uma checagem priorizada (verificação em duas etapas, visibilidade de foto/"visto por último", dispositivos conectados desconhecidos, backup de conversas) com o passo a passo exato de correção para cada item encontrado.
