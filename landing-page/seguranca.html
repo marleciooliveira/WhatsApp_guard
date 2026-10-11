@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segurança por Princípio — WhatsAppGuard | M2SEC Guard</title>
+<meta name="description" content="Como o WhatsAppGuard aplica princípios reconhecidos de segurança da informação (ISO 27001, ISO 27701, OWASP, NIST CSF, CIS Controls) e por que o agente de IA é especialista nas ameaças específicas do WhatsApp.">
+<style>
+  :root{
+    --bg:#040509; --bg2:#0c0f16; --bg3:#161c2a; --border:#2a3040;
+    --gold-1:#f8e8b0; --gold-2:#d4af37; --gold-3:#8c6c1f;
+    --silver:#c4cad4; --text:#f3f4f6; --muted:#9aa1b0; --muted2:#6b7280;
+    --green:#3fb97f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI',Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .gold-text{
+    background:linear-gradient(180deg,var(--gold-1) 0%,var(--gold-2) 45%,var(--gold-3) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 24px;border-radius:12px;font-weight:700;font-size:15px;
+    cursor:pointer;border:none;transition:transform .15s ease;text-align:center;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:2px solid var(--gold-1);outline-offset:3px;}
+  .btn-ghost{background:rgba(255,255,255,0.04);color:var(--text);border:1.5px solid var(--border);}
+  .btn-whatsapp{background:linear-gradient(180deg,#3fdc8f,#1e9e5f);color:#06130c;box-shadow:0 10px 30px rgba(63,185,127,0.25);}
+  section{padding:70px 0;}
+  .pill{
+    display:inline-block;padding:6px 16px;border-radius:999px;
+    border:1px solid rgba(212,175,55,0.35);color:var(--gold-2);
+    font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    background:rgba(212,175,55,0.07);
+  }
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(4,5,9,0.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{max-width:1280px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;flex-shrink:0;}
+  .brand svg{width:32px;height:32px;}
+  .brand .sub{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.5px;margin-left:2px;}
+  .back-link{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .back-link:hover{color:var(--text);}
+
+  .page-hero{padding:72px 0 56px;text-align:center;}
+  .page-hero h1{font-size:40px;font-weight:800;letter-spacing:-1px;line-height:1.2;max-width:720px;margin:20px auto 18px;text-wrap:balance;}
+  .page-hero p.lead{font-size:17px;color:var(--muted);max-width:620px;margin:0 auto;}
+  @media (max-width:700px){ .page-hero h1{font-size:30px;} }
+
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 44px;}
+  .sec-head .pill{margin-bottom:16px;}
+  .sec-head h2{font-size:28px;font-weight:800;letter-spacing:-.5px;margin-bottom:12px;text-wrap:balance;}
+  .sec-head p{color:var(--muted);font-size:15.5px;}
+
+  .frame-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px;margin:0 auto;}
+  .frame-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:26px 24px;}
+  .frame-card .tag{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold-2);display:block;margin-bottom:8px;}
+  .frame-card h3{font-size:17px;margin-bottom:10px;}
+  .frame-card p{font-size:14px;color:var(--muted);}
+  @media (max-width:760px){ .frame-grid{grid-template-columns:1fr;} }
+
+  .flag-card{max-width:760px;margin:36px auto 0;background:var(--bg);border:1.5px solid rgba(212,175,55,0.35);border-radius:14px;padding:24px 26px;font-size:14.5px;color:var(--text);}
+  .flag-card strong{color:var(--gold-2);}
+
+  .specialist-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:900px;margin:0 auto;align-items:start;}
+  .specialist-grid .col h3{font-size:16px;margin-bottom:10px;color:var(--gold-2);}
+  .specialist-grid ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .specialist-grid li{font-size:14.5px;color:var(--text);display:flex;gap:10px;align-items:flex-start;}
+  .specialist-grid li::before{content:"✓";color:var(--green);font-weight:800;}
+  @media (max-width:760px){ .specialist-grid{grid-template-columns:1fr;} }
+
+  .final-cta{
+    text-align:center;background:radial-gradient(circle at 50% 0%, rgba(212,175,55,0.1), transparent 60%),var(--bg2);
+    border-top:1px solid var(--border);
+  }
+  .final-cta h2{font-size:28px;font-weight:800;margin-bottom:14px;text-wrap:balance;}
+  .final-cta p{color:var(--muted);margin-bottom:28px;}
+
+  footer{padding:46px 0;border-top:1px solid var(--border);}
+  footer .wrap{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center;}
+  footer .f-brand{display:flex;align-items:center;gap:8px;font-weight:800;}
+  footer .f-brand svg{width:22px;height:22px;}
+  footer p{color:var(--muted2);font-size:12.5px;max-width:680px;}
+  footer .f-links{display:flex;gap:18px;font-size:13px;color:var(--muted);flex-wrap:wrap;justify-content:center;}
+  footer .f-refs{display:flex;gap:14px;font-size:12px;color:var(--muted2);flex-wrap:wrap;justify-content:center;align-items:center;padding-top:14px;border-top:1px solid var(--border);width:100%;max-width:680px;}
+  footer .f-refs a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--border);}
+  footer .f-refs a:hover{color:var(--text);}
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} .btn{transition:none;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="navgold" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f8e8b0"/><stop offset="45%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8c6c1f"/>
+          </linearGradient>
+        </defs>
+        <path d="M120,6 L213,53 L213,142 L120,234 L27,142 L27,53 Z" fill="#0e121c" stroke="url(#navgold)" stroke-width="7"/>
+        <path d="M100,104 L100,90 C100,76 109,66 120,66 C131,66 140,76 140,90 L140,104" fill="none" stroke="url(#navgold)" stroke-width="8" stroke-linecap="round"/>
+        <rect x="84" y="100" width="72" height="62" rx="9" fill="#0e121c" stroke="url(#navgold)" stroke-width="5"/>
+        <circle cx="120" cy="127" r="8" fill="url(#navgold)"/><rect x="117" y="131" width="6" height="13" rx="2" fill="url(#navgold)"/>
+      </svg>
+      M2<span class="gold-text">SEC</span><span class="sub">Guard</span>
+    </a>
+    <a class="back-link" href="index.html">← Voltar para o WhatsAppGuard</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="pill">Segurança da informação</span>
+    <h1>Segurança por princípio, <span class="gold-text">não por acaso</span></h1>
+    <p class="lead">O WhatsAppGuard não foi desenhado no improviso. Cada decisão de arquitetura segue diretrizes já validadas pelo mercado de segurança da informação — adaptadas para o canal mais usado pelos brasileiros: o WhatsApp.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">Base técnica reconhecida</span>
+      <h2>As referências por trás de cada decisão</h2>
+      <p>Normas e frameworks usados pela indústria de segurança — aplicados aqui no contexto de um produto que lida com golpe, dado sensível e confiança do usuário leigo.</p>
+    </div>
+    <div class="frame-grid">
+      <div class="frame-card">
+        <span class="tag">ISO/IEC 27001:2022</span>
+        <h3>Gestão de Segurança da Informação</h3>
+        <p>Define como identificar riscos e aplicar controles proporcionais para proteger confidencialidade, integridade e disponibilidade. Orienta como tratamos o conteúdo enviado pelo usuário durante o curto período de processamento.</p>
+      </div>
+      <div class="frame-card">
+        <span class="tag">ISO/IEC 27701:2025</span>
+        <h3>Gestão de Privacidade</h3>
+        <p>Norma de gestão de privacidade da informação. Guia os mesmos princípios de minimização e descarte de dados que também sustentam nossa aderência à LGPD.</p>
+      </div>
+      <div class="frame-card">
+        <span class="tag">OWASP Top 10 &amp; ASVS 5.0</span>
+        <h3>Segurança de Aplicações</h3>
+        <p>Checklist usado por toda a indústria para evitar as vulnerabilidades mais comuns em aplicações web (injeção, autenticação quebrada, exposição de dado sensível) — base da revisão técnica do backend do WhatsAppGuard.</p>
+      </div>
+      <div class="frame-card">
+        <span class="tag">NIST Cybersecurity Framework 2.0</span>
+        <h3>Identificar, Proteger, Detectar, Responder, Recuperar</h3>
+        <p>Estrutura usada para organizar como pensamos risco de golpe de ponta a ponta — da identificação de um padrão suspeito até a orientação de resposta que chega pro usuário.</p>
+      </div>
+      <div class="frame-card">
+        <span class="tag">CIS Controls v8.1</span>
+        <h3>Controles Técnicos Priorizados</h3>
+        <p>Conjunto de controles práticos usados como baseline de hardening (configuração segura de infraestrutura, controle de acesso, gestão de log) em qualquer ambiente que lida com dado sensível — incluindo a VM que hospeda o WhatsAppGuard.</p>
+      </div>
+      <div class="frame-card">
+        <span class="tag">LGPD · Lei 13.709/2018</span>
+        <h3>Privacidade por Lei, no Brasil</h3>
+        <p>Base legal brasileira para tratamento de dados pessoais. Reforça, do lado jurídico, os mesmos princípios de minimização e descarte já adotados por design.</p>
+      </div>
+    </div>
+
+    <div class="flag-card">
+      <strong>Importante, com transparência:</strong> aplicar os princípios dessas referências significa que o desenvolvimento do WhatsAppGuard segue diretrizes reconhecidas pelo mercado de segurança — não que o produto já passou por uma auditoria formal de certificação em cada uma delas. Uma certificação formal (ISO 27001 certificada por organismo acreditado, por exemplo) é um processo próprio, independente, que seria comunicado separadamente com a documentação correspondente caso buscada no futuro.
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">Especialização</span>
+      <h2>Um agente especialista em WhatsApp, não um chatbot genérico</h2>
+      <p>O "cérebro" do WhatsAppGuard não foi treinado para falar de tudo — foi contextualizado especificamente para as ameaças que acontecem dentro do WhatsApp.</p>
+    </div>
+    <div class="specialist-grid">
+      <div class="col">
+        <h3>O que ele conhece a fundo</h3>
+        <ul>
+          <li>Golpes de phishing disfarçados de banco, promoção ou encomenda</li>
+          <li>Engenharia social via conta clonada (código de verificação, compartilhamento de tela)</li>
+          <li>Fraude de Pix (chave, copia-e-cola) e boleto adulterado</li>
+          <li>Configurações de privacidade e segurança nativas do próprio WhatsApp</li>
+          <li>Padrões de golpe reportados e documentados no mercado brasileiro</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Por que isso importa</h3>
+        <ul>
+          <li>Respostas específicas e acionáveis, não dicas genéricas de "cuidado com golpes"</li>
+          <li>Reconhece o contexto certo: nem todo pedido de código é golpe, mas o padrão de risco é identificável</li>
+          <li>Fala a língua de quem recebeu o golpe, não a língua de quem entende de tecnologia</li>
+          <li>Atualizado conforme novos padrões de fraude aparecem no WhatsApp brasileiro</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Quer ver isso funcionando na prática?</h2>
+    <p>Volte para a página principal e entre na lista de espera do WhatsAppGuard.</p>
+    <a class="btn btn-whatsapp" href="index.html#exemplo-golpe">Ver exemplo de golpe real →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="footgold" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f8e8b0"/><stop offset="45%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8c6c1f"/>
+          </linearGradient>
+        </defs>
+        <path d="M120,6 L213,53 L213,142 L120,234 L27,142 L27,53 Z" fill="#0e121c" stroke="url(#footgold)" stroke-width="7"/>
+        <path d="M100,104 L100,90 C100,76 109,66 120,66 C131,66 140,76 140,90 L140,104" fill="none" stroke="url(#footgold)" stroke-width="8" stroke-linecap="round"/>
+        <rect x="84" y="100" width="72" height="62" rx="9" fill="#0e121c" stroke="url(#footgold)" stroke-width="5"/>
+        <circle cx="120" cy="127" r="8" fill="url(#footgold)"/><rect x="117" y="131" width="6" height="13" rx="2" fill="url(#footgold)"/>
+      </svg>
+      M2SEC Guard — WhatsAppGuard
+    </div>
+    <div class="f-links">
+      <a href="index.html">Página principal</a>
+      <a href="index.html#faq">Dúvidas</a>
+      <a href="mailto:contato@m2sec.com.br">contato@m2sec.com.br</a>
+    </div>
+    <div class="f-refs">
+      <span>Referências citadas nesta página:</span>
+      <a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001</a>
+      <a href="https://www.iso.org/standard/27701" target="_blank" rel="noopener">ISO/IEC 27701</a>
+      <a href="https://owasp.org/Top10/" target="_blank" rel="noopener">OWASP Top 10</a>
+      <a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener">OWASP ASVS</a>
+      <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener">NIST CSF 2.0</a>
+      <a href="https://www.cisecurity.org/controls" target="_blank" rel="noopener">CIS Controls v8.1</a>
+      <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">LGPD</a>
+      <a href="https://www.bcb.gov.br/" target="_blank" rel="noopener">Banco Central</a>
+    </div>
+    <p>Esta página descreve princípios e boas práticas que orientam o desenvolvimento do WhatsAppGuard — não constitui declaração de certificação formal em nenhuma das normas citadas. Produto em fase beta. © 2026 M2SEC Security. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>
