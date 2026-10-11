@@ -86,3 +86,5 @@ Como o WhatsAppGuard analisa mensagens enviadas por usuários, o projeto adota o
 *   **Fase 2 (roadmap):** app mobile nativo para módulo on-device + antivírus (ver Roadmap).
 
 Veja o detalhamento completo de requisitos técnicos em [`REQUIREMENTS.md`](./REQUIREMENTS.md), a pesquisa de mercado em [`MARKET_RESEARCH.md`](./MARKET_RESEARCH.md), o posicionamento competitivo em [`MARKETING_PLAN.md`](./MARKETING_PLAN.md), o escopo do MVP em [`MVP.md`](./MVP.md), o plano técnico/fluxo de processamento em [`PLANO_TECNICO.md`](./PLANO_TECNICO.md) e o log consolidado de decisões em [`DECISIONS.md`](./DECISIONS.md).
+
+**App mobile (Android → iOS):** o escopo e as fases do app nativo (publicado primeiro na Play Store, depois na App Store) estão em [`MVP_APP.md`](./MVP_APP.md) e [`PLANO_TECNICO_APP.md`](./PLANO_TECNICO_APP.md).

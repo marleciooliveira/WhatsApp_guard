@@ -53,7 +53,15 @@ Log das decisões tomadas durante o planejamento e construção da landing page,
 - **Pendência real de publicação:** os botões de WhatsApp na landing page usam o número já existente da M2SEC (`5561996447858`) como placeholder — precisa ser trocado pelo número oficial do WhatsAppGuard quando ele existir (ver comentário HTML no topo do `index.html` e `PENDENCIAS.md`).
 - **Framing como "fase beta / lista de espera":** a página não afirma que o bot já está no ar — CTAs pedem para entrar na lista de espera, já que o MVP ainda não foi implementado (só planejado).
 
-## 8. Créditos
+## 8. App mobile — Android primeiro, iOS depois
+
+- **Ordem confirmada:** construir e publicar na Play Store (Android) primeiro, validar com usuários reais, só depois portar pra App Store (iOS).
+- **Natureza do app nas primeiras fases:** interface de cadastro/onboarding que leva o cliente a conectar o WhatsAppGuard na própria conta de WhatsApp — não substitui o bot, que continua rodando via WhatsApp Cloud API.
+- **Framework escolhido:** Flutter — justamente porque o port pra iOS já está confirmado, evita reescrever o app depois.
+- **Fases enumeradas (A a F)** cada uma buildável/testável isoladamente, detalhadas em `MVP_APP.md` e `PLANO_TECNICO_APP.md`.
+- **Risco identificado e descartado:** não ler notificações do WhatsApp via `NotificationListenerService` (como o projeto de referência ZapSeguro faz) — risco de rejeição na Play Store e de violar Termos de Serviço do WhatsApp. O app só interage com o WhatsApp via deep link oficial (`wa.me`) e via o backend já homologado na Cloud API.
+
+## 9. Créditos
 
 - Produto criado por **Marlécio Oliveira** — Analista DevSecOps Bancário Senior, CEO da M2SEC. Credit exibido na landing page (seção "Quem está por trás") e no rodapé.
 
@@ -71,5 +79,7 @@ Log das decisões tomadas durante o planejamento e construção da landing page,
 | `MARKETING_PLAN.md` | Posicionamento, mensagens por público, conformidade legal |
 | `PENDENCIAS.md` | Itens que precisam de decisão/validação antes de publicar algo definitivo |
 | `DECISIONS.md` | Este arquivo — log consolidado das decisões já tomadas |
+| `MVP_APP.md` | Escopo e fases (A–F) do app mobile, Android primeiro depois iOS |
+| `PLANO_TECNICO_APP.md` | Arquitetura, stack (Flutter) e fluxo de cada fase do app mobile |
 | `landing-page/index.html` | Landing page publicada |
 | `landing-page/seguranca.html` | Página de segurança/referências |
