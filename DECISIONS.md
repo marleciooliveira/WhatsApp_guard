@@ -8,7 +8,7 @@ Log das decisões tomadas durante o planejamento e construção da landing page,
 
 - **Nome correto do produto:** WhatsAppGuard (não "WhatssAppGuard", nem "Mana" — nomes anteriores usados durante o planejamento e corrigidos em todo o repositório).
 - **Marca comercial:** M2SEC. O WhatsAppGuard é vendido como um produto/linha da M2SEC (mesma empresa do site de remoção de dados em `app.m2sec.com.br`), não uma marca própria separada.
-- **Identidade visual:** reaproveitada do site atual da M2SEC — paleta preto/dourado, mesma logo (escudo com cadeado), mesmos componentes de UI. Ver `landing-page/index.html`.
+- **Identidade visual:** reaproveitada do site atual da M2SEC — paleta preto/dourado, mesma logo (escudo com cadeado), mesmos componentes de UI. Ver `index.html`.
 
 ## 2. Escopo e fases técnicas
 
@@ -39,17 +39,18 @@ Log das decisões tomadas durante o planejamento e construção da landing page,
 
 ## 6. Conformidade e cautela de comunicação
 
-- Linguagem de marketing sempre separa **"alinhado a princípios"** de **"certificado/conforme"** — vale para LGPD, Bacen/Pix e para as normas de segurança (ISO 27001, ISO 27701, OWASP, NIST CSF, CIS Controls) citadas na página `landing-page/seguranca.html`.
+- Linguagem de marketing sempre separa **"alinhado a princípios"** de **"certificado/conforme"** — vale para LGPD, Bacen/Pix e para as normas de segurança (ISO 27001, ISO 27701, OWASP, NIST CSF, CIS Controls) citadas na página `seguranca.html`.
 - Nunca comunicar que o WhatsAppGuard "confirma" a identidade de um destinatário de Pix — só identifica formato suspeito/inválido.
 - Todas essas cautelas e os itens ainda pendentes de decisão/validação jurídica estão centralizados em `PENDENCIAS.md`.
 
 ## 7. Landing page — decisões de publicação
 
-- **Hospedagem escolhida:** GitHub Pages (`https://marleciooliveira.github.io/WhatsApp_guard/landing-page/`), servindo direto do branch `main`, raiz do repositório — habilitado via API do GitHub, sem precisar de token manual (usou o `gh` CLI já autenticado).
-- **Por que não AWS/S3+CloudFront:** o domínio `app.m2sec.com.br` já serve o site da remoção de dados (outro produto da M2SEC); publicar ali por cima sobrescreveria esse site. GitHub Pages foi a opção mais rápida e sem risco de conflito, a pedido explícito do usuário.
+- **Hospedagem escolhida:** GitHub Pages, servindo direto do branch `main`, raiz do repositório — habilitado via API do GitHub, sem precisar de token manual (usou o `gh` CLI já autenticado).
+- **Domínio customizado:** `guard.m2sec.com.br` (domínio próprio, de posse do usuário), configurado via arquivo `CNAME` no repositório + registro CNAME no DNS. URL de fallback do GitHub: `https://marleciooliveira.github.io/WhatsApp_guard/`.
+- **Por que não AWS/S3+CloudFront (como o `app.m2sec.com.br` atual):** DNS do `m2sec.com.br` está no Registro.br, não na AWS — então usar GitHub Pages + CNAME não depende do acesso AWS (que ficou bloqueado pelo MFA do usuário root). Também evita sobrescrever o site de remoção de dados que já roda em `app.m2sec.com.br` via S3+CloudFront.
 - **Páginas publicadas:**
-  - `landing-page/index.html` — landing page principal (hero, recursos, diagnóstico, exemplo de golpe de engenharia social, comparativo com concorrentes, privacidade, FAQ, criador).
-  - `landing-page/seguranca.html` — página dedicada explicando os princípios de segurança (ISO/OWASP/NIST/CIS) e a especialização do agente em ameaças do WhatsApp.
+  - `index.html` — landing page principal (hero, recursos, diagnóstico, exemplo de golpe de engenharia social, comparativo com concorrentes, privacidade, FAQ, criador).
+  - `seguranca.html` — página dedicada explicando os princípios de segurança (ISO/OWASP/NIST/CIS) e a especialização do agente em ameaças do WhatsApp.
 - **Pendência real de publicação:** os botões de WhatsApp na landing page usam o número já existente da M2SEC (`5561996447858`) como placeholder — precisa ser trocado pelo número oficial do WhatsAppGuard quando ele existir (ver comentário HTML no topo do `index.html` e `PENDENCIAS.md`).
 - **Framing como "fase beta / lista de espera":** a página não afirma que o bot já está no ar — CTAs pedem para entrar na lista de espera, já que o MVP ainda não foi implementado (só planejado).
 
@@ -81,5 +82,5 @@ Log das decisões tomadas durante o planejamento e construção da landing page,
 | `DECISIONS.md` | Este arquivo — log consolidado das decisões já tomadas |
 | `MVP_APP.md` | Escopo e fases (A–F) do app mobile, Android primeiro depois iOS |
 | `PLANO_TECNICO_APP.md` | Arquitetura, stack (Flutter) e fluxo de cada fase do app mobile |
-| `landing-page/index.html` | Landing page publicada |
-| `landing-page/seguranca.html` | Página de segurança/referências |
+| `index.html` | Landing page publicada |
+| `seguranca.html` | Página de segurança/referências |

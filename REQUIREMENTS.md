@@ -80,7 +80,7 @@ Quando o backend migrar pra Opção B (Ollama self-hosted), a forma certa de "al
 
 | Fonte | Pode usar? | Como |
 |---|---|---|
-| Resumos próprios dos princípios de ISO 27001/27701, OWASP, NIST CSF, CIS Controls (os mesmos já escritos em `landing-page/seguranca.html`) | ✅ Sim | Usar o texto que nós mesmos escrevemos — não o texto integral das normas |
+| Resumos próprios dos princípios de ISO 27001/27701, OWASP, NIST CSF, CIS Controls (os mesmos já escritos em `seguranca.html`) | ✅ Sim | Usar o texto que nós mesmos escrevemos — não o texto integral das normas |
 | **Texto integral das normas ISO 27001/27701** | ❌ Não | São documentos pagos e protegidos por direito autoral da ISO — não redistribuir/ingerir o texto completo na base |
 | OWASP Top 10 / ASVS (texto oficial) | ✅ Sim, com atribuição | Licença Creative Commons — pode usar trechos oficiais |
 | NIST Cybersecurity Framework (texto oficial) | ✅ Sim | Obra do governo dos EUA, domínio público |

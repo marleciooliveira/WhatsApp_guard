@@ -69,7 +69,7 @@ flowchart TD
     D --> E[Usuario volta pro app e marca como resolvido]
 ```
 
-- Os itens e textos são os mesmos já definidos na seção "Diagnóstico" da landing page (`landing-page/index.html`) — a Fase D só muda o canal de entrega (app nativo em vez de texto no chat).
+- Os itens e textos são os mesmos já definidos na seção "Diagnóstico" da landing page (`index.html`) — a Fase D só muda o canal de entrega (app nativo em vez de texto no chat).
 - Usa Android Intents (`android.intent.action.VIEW` com os esquemas internos do WhatsApp, quando disponíveis) ou, na ausência de deep link oficial pra tela específica, abre o WhatsApp na tela de Configurações geral.
 
 ## 6. Fase E — Scan local via "Compartilhar com..."
