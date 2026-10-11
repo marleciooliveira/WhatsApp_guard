@@ -2,6 +2,8 @@
 
 Complementa [`MVP.md`](./MVP.md) (que cobre o bot via WhatsApp Cloud API) com uma frente nova: um **app nativo, publicado primeiro na Play Store (Android) e depois na App Store (iOS)**.
 
+> 🎯 **Foco atual: Android (Fases A–E).** A Fase F (iOS) fica documentada abaixo por completude de planejamento, mas é informativa — **não começa a ser trabalhada antes das fases Android estarem testadas e validadas com usuários reais**. Nenhum esforço de build/setup de iOS entra no cronograma atual.
+
 ## 0. O que esse app é — e o que ele NÃO é
 
 **O app é a porta de entrada / interface de cadastro**, não um substituto do bot. O "cérebro" do WhatsAppGuard continua rodando via WhatsApp Cloud API (ver `PLANO_TECNICO.md`). O app:
@@ -24,7 +26,7 @@ Complementa [`MVP.md`](./MVP.md) (que cobre o bot via WhatsApp Cloud API) com um
 | **E** | Scan local via "Compartilhar com..." | Usuário compartilha um link suspeito direto de outro app pro WhatsAppGuard (Android Share Sheet), sem precisar colar no WhatsApp — processamento pode ser local (ver `REQUIREMENTS.md` seção 9, Fase 2) | Fase A | Compartilhar um link de teste pro app retorna veredito, inclusive sem internet se já for a versão on-device |
 | **F** | Port para iOS | Mesmo app, rodando em iOS, publicado na App Store | Fases A–D validadas e estáveis no Android | App builda e roda no iOS com paridade de funcionalidades das fases já validadas |
 
-**Ordem de execução:** A → B → C → D → E, com Android sempre primeiro. F só começa depois que o conjunto A–D (no mínimo) estiver validado com usuários reais no Android — exatamente como pedido.
+**Ordem de execução:** A → B → C → D → E, todas em Android. F (iOS) é a última e só entra em planejamento ativo depois que o conjunto A–D (no mínimo) estiver validado com usuários reais no Android — exatamente como pedido.
 
 ---
 

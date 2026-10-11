@@ -2,6 +2,8 @@
 
 Complementa [`MVP_APP.md`](./MVP_APP.md). Detalha arquitetura, stack e fluxo de cada fase (A a F), na ordem de execução Android → iOS.
 
+> 🎯 **Foco atual: Fases A–E (Android).** A seção 7 (Fase F / iOS) é mantida aqui como referência de planejamento, mas só vira trabalho ativo depois que as fases Android estiverem testadas.
+
 ---
 
 ## 1. Stack
