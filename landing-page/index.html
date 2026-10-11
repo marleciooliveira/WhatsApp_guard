@@ -68,15 +68,15 @@
     background:rgba(4,5,9,0.85);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;}
+  nav .wrap{max-width:1280px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;flex-shrink:0;}
   .brand svg{width:32px;height:32px;}
   .brand .sub{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.5px;margin-left:2px;}
-  nav .nav-links{display:flex;gap:28px;font-size:14px;color:var(--muted);}
+  nav .nav-links{display:flex;gap:18px;font-size:13.5px;color:var(--muted);white-space:nowrap;}
   nav .nav-links a:hover{color:var(--text);}
-  .nav-cta{display:flex;gap:12px;}
-  .nav-cta .btn{padding:10px 18px;font-size:14px;}
-  @media (max-width:760px){ nav .nav-links{display:none;} }
+  .nav-cta{display:flex;gap:12px;flex-shrink:0;}
+  .nav-cta .btn{padding:10px 18px;font-size:14px;white-space:nowrap;}
+  @media (max-width:1150px){ nav .nav-links{display:none;} }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -266,7 +266,7 @@
       <a href="#recursos">Recursos</a>
       <a href="#diagnostico">Diagnóstico</a>
       <a href="#exemplo-golpe">Engenharia social</a>
-      <a href="#por-que">Por que o WhatsAppGuard</a>
+      <a href="#por-que">Diferenciais</a>
       <a href="#privacidade">Privacidade</a>
       <a href="#faq">Dúvidas</a>
     </div>
