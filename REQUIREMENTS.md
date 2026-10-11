@@ -55,6 +55,45 @@ Como a prioridade é custo zero/baixo, há duas rotas:
 
 ---
 
+## 3.1 Como alimentar o Ollama com conhecimento de segurança (RAG, não fine-tuning)
+
+Quando o backend migrar pra Opção B (Ollama self-hosted), a forma certa de "alimentar" o modelo com os documentos de segurança **não é fine-tuning** — é **RAG (Retrieval-Augmented Generation)**.
+
+### Por que RAG e não fine-tuning
+- Fine-tuning exige dataset formatado (pares pergunta/resposta), poder de GPU pra treinar, e **retreinar o modelo inteiro toda vez que aparecer um golpe novo** — caro, lento, incompatível com a prioridade de custo baixo já definida.
+- RAG só exige atualizar documentos numa base vetorial — o modelo-base continua o mesmo, só muda o que é "lembrado" na hora de responder. Atualizar um padrão de golpe novo vira editar um arquivo, não re-treinar nada.
+
+### Arquitetura (self-hosted, grátis)
+1. **Modelo de embedding:** `nomic-embed-text` ou `bge-small`, ambos disponíveis via Ollama, rodando na mesma VM — grátis, sem API externa.
+2. **Vector store:** Chroma ou FAISS (open-source, embutido no próprio backend Python, sem serviço gerenciado pago).
+3. **Fluxo de consulta:**
+   ```mermaid
+   flowchart LR
+       Q[Pergunta ou conteudo do usuario] --> E[Gera embedding]
+       E --> S[Busca top-k trechos mais relevantes no vector store]
+       S --> P[Injeta os trechos encontrados no prompt]
+       P --> LLM[Ollama gera a resposta final]
+   ```
+4. **Atualização da base:** reindexar (gerar embeddings de novo) só do(s) documento(s) alterado(s) — processo simples, roda sob demanda ou agendado, não é um retraining.
+
+### Fontes de conteúdo para a base — com cuidado de licenciamento
+
+| Fonte | Pode usar? | Como |
+|---|---|---|
+| Resumos próprios dos princípios de ISO 27001/27701, OWASP, NIST CSF, CIS Controls (os mesmos já escritos em `landing-page/seguranca.html`) | ✅ Sim | Usar o texto que nós mesmos escrevemos — não o texto integral das normas |
+| **Texto integral das normas ISO 27001/27701** | ❌ Não | São documentos pagos e protegidos por direito autoral da ISO — não redistribuir/ingerir o texto completo na base |
+| OWASP Top 10 / ASVS (texto oficial) | ✅ Sim, com atribuição | Licença Creative Commons — pode usar trechos oficiais |
+| NIST Cybersecurity Framework (texto oficial) | ✅ Sim | Obra do governo dos EUA, domínio público |
+| CIS Controls v8.1 (texto oficial) | ⚠️ Verificar | CIS permite uso não-comercial livremente; uso comercial pode exigir licença — confirmar antes de ingerir o texto completo |
+| LGPD (Lei 13.709/2018) | ✅ Sim | Lei pública brasileira |
+| Documentação pública do WhatsApp (Central de Ajuda) | ✅ Sim, resumido | Resumir/referenciar, não copiar página inteira |
+| Padrões de golpe documentados na pesquisa de mercado (`MARKET_RESEARCH.md`) e exemplos já escritos (ex: golpe do "falso parente" pedindo código/compartilhamento de tela) | ✅ Sim | Conteúdo próprio do projeto |
+| Recomendações públicas do Banco Central sobre Pix | ✅ Sim | Conteúdo institucional público |
+
+**Regra prática:** a base de conhecimento usa os **resumos que já escrevemos** (seguranca.html, MARKET_RESEARCH.md) como núcleo, complementados por fontes abertas (OWASP, NIST, LGPD) — nunca o texto integral de norma paga.
+
+---
+
 ## 4. APIs de Reputação de Links (Antiphishing)
 
 - **Google Safe Browsing API** — gratuita, cota generosa, precisa de uma API key via Google Cloud Console (não precisa de cartão de crédito para esse serviço específico).

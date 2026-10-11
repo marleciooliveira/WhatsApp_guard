@@ -10,8 +10,9 @@ Complementa [`MVP.md`](./MVP.md). Define as etapas de construção e o fluxo de 
 |---|---|---|
 | **0 — Infra base** | VM configurada (Nginx, Certbot/TLS, domínio, Security Group), app Meta em modo Development, número de teste ativo | Acesso à VM AWS, domínio |
 | **1 — Esqueleto do bot** | Webhook FastAPI recebendo e respondendo mensagem de texto simples (eco) + integração inicial com o LLM (free-tier) | Sprint 0 |
+| **1.5 — Base de conhecimento (RAG)** | Pipeline de embeddings + vector store (Chroma/FAISS) alimentado com os resumos de segurança já escritos (`seguranca.html`, `MARKET_RESEARCH.md`) — só relevante quando migrar para Ollama self-hosted. Ver `REQUIREMENTS.md` seção 3.1 | Sprint 1 |
 | **2 — Antiphishing de links** | Extração de URL, checagem de typosquatting local, consulta a Safe Browsing/VirusTotal, resposta formatada | Sprint 1 |
-| **3 — Engenharia social (prints/texto)** | OCR (Tesseract) + prompt do LLM para detectar padrões de golpe, resposta com % de risco | Sprint 1 |
+| **3 — Engenharia social (prints/texto)** | OCR (Tesseract) + prompt do LLM (com contexto do RAG, se disponível) para detectar padrões de golpe, resposta com % de risco | Sprint 1 (e 1.5, se já migrado para Ollama) |
 | **4 — Facilitador de configurações** | Base de guias (2FA, privacidade, bloqueio) + roteamento de intenção via LLM | Sprint 1 |
 | **5 — Pix/Boleto** | Parsing local de chave Pix, BR Code (copia-e-cola) e linha digitável de boleto + alerta de formato | Sprint 1 |
 | **6 — Comando por voz** | Download de áudio do WhatsApp, conversão (ffmpeg), transcrição (faster-whisper), reuso dos pipelines das sprints 2–5 | Sprints 2, 3, 4, 5 |
