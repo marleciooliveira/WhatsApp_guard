@@ -42,7 +42,7 @@ Escopo da **Fase 1** (ver divisão de fases em `README.md`, `REQUIREMENTS.md` se
 | **Config/segredos** | AWS SSM Parameter Store (tier Standard, gratuito) | Evita hardcode de API keys (WhatsApp token, LLM key, VirusTotal key). |
 | **Logs/monitoramento** | CloudWatch (free tier básico) ou logs locais via journald | Observabilidade mínima sem custo incremental relevante. |
 
-> Ação pendente: confirmar o tipo de instância EC2 já disponível hoje — se for menor que `t3.medium`, pode ser necessário redimensionar antes de iniciar.
+> **Resolvido (2026-10-11):** a conta AWS tem restrição de "Free Tier only" ativa em Billing Preferences, que bloqueia `t3.medium` (mesmo via Spot). Instância provisionada com o tipo disponível mais próximo: `t3.small` (2 vCPU / 2GB RAM), instância `i-09c4afca1e241878a`, IP público `18.207.254.237`. Monitorar uso de RAM quando Redis + FastAPI + Tesseract rodarem juntos — pode ser necessário remover a restrição de Free Tier e redimensionar para `t3.medium` depois.
 
 ---
 

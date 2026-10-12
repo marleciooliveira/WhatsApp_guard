@@ -45,9 +45,10 @@ Log das decisões tomadas durante o planejamento e construção da landing page,
 
 ## 7. Landing page — decisões de publicação
 
-- **Hospedagem escolhida:** GitHub Pages, servindo direto do branch `main`, raiz do repositório — habilitado via API do GitHub, sem precisar de token manual (usou o `gh` CLI já autenticado).
-- **Domínio customizado:** `guard.m2sec.com.br` (domínio próprio, de posse do usuário), configurado via arquivo `CNAME` no repositório + registro CNAME no DNS. URL de fallback do GitHub: `https://marleciooliveira.github.io/WhatsApp_guard/`.
-- **Por que não AWS/S3+CloudFront (como o `app.m2sec.com.br` atual):** DNS do `m2sec.com.br` está no Registro.br, não na AWS — então usar GitHub Pages + CNAME não depende do acesso AWS (que ficou bloqueado pelo MFA do usuário root). Também evita sobrescrever o site de remoção de dados que já roda em `app.m2sec.com.br` via S3+CloudFront.
+- **Hospedagem original:** GitHub Pages, servindo direto do branch `main`, raiz do repositório — habilitado via API do GitHub, sem precisar de token manual (usou o `gh` CLI já autenticado). Motivo na época: o acesso à conta AWS estava bloqueado pelo MFA do usuário root.
+- **Migrado para AWS (2026-10-12):** acesso root recuperado, backend provisionado em EC2 (`whatsappguard-backend`, ver `MVP.md`) — com o servidor já rodando, a landing page foi movida para lá também, servida como arquivos estáticos pelo mesmo Nginx que atende `api.guard.m2sec.com.br` (`/var/www/guard.m2sec.com.br`), consolidando a infra num só lugar em vez de manter hospedagem dividida entre GitHub Pages e AWS.
+- **Domínio customizado:** `guard.m2sec.com.br` (domínio próprio, de posse do usuário) — DNS no Registro.br, registro **A** apontando direto para o IP da instância EC2 (antes era CNAME para o GitHub Pages). Certificado TLS via Let's Encrypt/Certbot.
+- **Arquivo `CNAME` do GitHub Pages removido do repositório** — não é mais necessário, já que o DNS não aponta mais para lá. O site ainda existe em `https://marleciooliveira.github.io/WhatsApp_guard/` como fallback puro do GitHub (sem domínio customizado nem TLS próprio).
 - **Páginas publicadas:**
   - `index.html` — landing page principal (hero, recursos, diagnóstico, exemplo de golpe de engenharia social, comparativo com concorrentes, privacidade, FAQ, criador).
   - `seguranca.html` — página dedicada explicando os princípios de segurança (ISO/OWASP/NIST/CIS) e a especialização do agente em ameaças do WhatsApp.
