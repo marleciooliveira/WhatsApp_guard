@@ -1,4 +1,4 @@
-# Plano Técnico — App Mobile WhatsAppGuard
+# Plano Técnico — App Mobile M2SEC Guard
 
 Complementa [`MVP_APP.md`](./MVP_APP.md). Detalha arquitetura, stack e fluxo de cada fase (A a F), na ordem de execução Android → iOS.
 
@@ -12,7 +12,7 @@ Complementa [`MVP_APP.md`](./MVP_APP.md). Detalha arquitetura, stack e fluxo de 
 |---|---|---|
 | Framework do app | **Flutter (Dart)** | Único codebase pra Android e iOS — decisão justificada em `MVP_APP.md` seção 2, já que o port pra iOS está confirmado como próximo passo. |
 | Gerenciamento de estado | Provider ou Riverpod (Flutter) | Simples o suficiente pras Fases A–D, que são majoritariamente telas + chamadas HTTP. |
-| Deep link pro WhatsApp | `url_launcher` (pacote Flutter) abrindo `https://wa.me/<numero>?text=<mensagem>` | Mesmo mecanismo já usado nos botões da landing page — reaproveita o número oficial do WhatsAppGuard. |
+| Deep link pro WhatsApp | `url_launcher` (pacote Flutter) abrindo `https://wa.me/<numero>?text=<mensagem>` | Mesmo mecanismo já usado nos botões da landing page — reaproveita o número oficial do M2SEC Guard. |
 | Comunicação com backend | `http` ou `dio` (Flutter) consumindo os endpoints do backend FastAPI já existente (`REQUIREMENTS.md`) | Reaproveita a mesma API que atende o webhook do WhatsApp — só adiciona rotas novas de leitura. |
 | Build/CI | Codemagic ou GitHub Actions com Flutter action | Gera o AAB (Android) assinado e sobe automaticamente pro Play Console nas trilhas de teste. |
 | Scan local (Fase E, futuro) | TensorFlow Lite / ONNX Runtime Mobile | Mesmo caminho já previsto em `REQUIREMENTS.md` seção 9 para a Fase 2 on-device — a Fase E deste plano É o início dessa Fase 2, só que iniciando pelo "compartilhar link", não pelo antivírus completo. |
@@ -23,7 +23,7 @@ Complementa [`MVP_APP.md`](./MVP_APP.md). Detalha arquitetura, stack e fluxo de 
 
 ```mermaid
 flowchart TD
-    A[Usuário abre o app] --> B[Tela explicativa: o que é o WhatsAppGuard]
+    A[Usuário abre o app] --> B[Tela explicativa: o que é o M2SEC Guard]
     B --> C[Botão: Começar a usar]
     C --> D[url_launcher abre wa.me/numero com mensagem pre-preenchida]
     D --> E[WhatsApp abre com a conversa iniciada]
@@ -39,7 +39,7 @@ flowchart TD
     A[Usuário digita o número a proteger] --> B[App chama backend: POST /status]
     B --> C{Backend já recebeu mensagem desse número?}
     C -->|Não ainda| D[App mostra: Pendente - mande uma mensagem de teste]
-    D --> E[Usuário manda mensagem pro WhatsAppGuard via WhatsApp]
+    D --> E[Usuário manda mensagem pro M2SEC Guard via WhatsApp]
     E --> F[App repete o POST /status periodicamente]
     F --> C
     C -->|Sim| G[App mostra: Conectado]
@@ -76,7 +76,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[Usuario ve link suspeito em outro app] --> B[Compartilhar... > WhatsAppGuard]
+    A[Usuario ve link suspeito em outro app] --> B[Compartilhar... > M2SEC Guard]
     B --> C{Modelo local disponivel no aparelho?}
     C -->|Sim| D[Analise on-device: typosquatting + modelo leve]
     C -->|Nao ainda| E[Envia pro mesmo backend da Fase 1 processar]
